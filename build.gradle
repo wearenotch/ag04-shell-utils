@@ -1,0 +1,47 @@
+plugins {
+    id 'net.researchgate.release' version '2.7.0'
+}
+
+group = 'com.ag04.utils'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
+
+uploadArchives {
+    repositories {
+        if (hasProperty('ag04_nexus_username') && hasProperty('ag04_nexus_password')) {
+            maven {
+                url 'http://nexus.ag04.com/content/repositories/releases'
+                credentials {
+                    username ag04_nexus_username
+                    password ag04_nexus_password
+                }
+            }
+        }
+    }
+}
+
+
+afterReleaseBuild.dependsOn uploadArchives
+
+dependencies {
+    
+
+    compile 'org.slf4j:slf4j-api:1.7.25'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.8'
+}
