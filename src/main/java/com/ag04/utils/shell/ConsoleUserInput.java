@@ -1,8 +1,6 @@
 package com.ag04.utils.shell;
 
 import org.jline.reader.LineReader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
