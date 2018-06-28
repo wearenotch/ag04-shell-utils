@@ -18,7 +18,6 @@ public class ConsoleUserInput {
         this.lineReader = lineReader;
     }
 
-
     /**
      * Loops until one of the `options` is provided. Pressing return is equivalent to
      * returning `defaultValue`.
