@@ -22,7 +22,7 @@ gradle.projectsEvaluated {
 
 uploadArchives {
     repositories {
-        if (hasProperty('ag04_nexus_username') && hasProperty('ag04_nexus_password')) {
+        if (project.hasProperty('ag04_nexus_username') && project.hasProperty('ag04_nexus_password')) {
             maven {
                 url 'http://nexus.ag04.com/content/repositories/releases'
                 credentials {
