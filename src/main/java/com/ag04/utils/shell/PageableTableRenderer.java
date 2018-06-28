@@ -47,16 +47,16 @@ public class PageableTableRenderer {
                 displayResult = displayResult + commandLine;
                 String answer = consoleUserInput.promptWithOptions(displayResult, "n", Arrays.asList("n", "p", "q"));
                 switch (answer.toLowerCase()) {
-                    "q": return "";
-                    "n": {
-                        start = start + pageSize
+                    case "q": return "";
+                    case "n": start = start + pageSize;
+                    case "p": {
+                        if (start == 1) {
+                            start = 1;
+                        } else {
+                            start = start - pageSize;
+                        }
                     }
-                    "p" -> {
-                        start = if (start == 1) 1 else start - pageSize
-                    }
-                    else -> {
-                        return ""
-                    }
+                    default: return "";
                 }
             } else {
                 finished = true;
