@@ -16,7 +16,7 @@ public class PageableTableRenderer {
         this.consoleUserInput = consoleUserInput;
     }
 
-    String render(List<String> headerRows, TableDataSource tableDataSource, int pageSize) {
+    public String render(List<String> headerRows, TableDataSource tableDataSource, int pageSize) {
         String displayResult;
 
         int start = 1;

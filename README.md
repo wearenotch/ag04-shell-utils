@@ -23,6 +23,9 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.2
+Declared method PageableTableRenderer.render() as public
+
 ### Version 0.1.0
 First release contains the following util classes:
 * ConsoleUserInput - 
