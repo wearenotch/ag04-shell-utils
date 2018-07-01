@@ -36,10 +36,11 @@ public class ConsoleUserInput {
 
     public String prompt(String  prompt, String defaultValue, boolean echo) {
         String answer = "";
+
         if (echo) {
-            answer = lineReader.readLine("$prompt: ");
+            answer = lineReader.readLine(prompt + ": ");
         } else {
-            answer = lineReader.readLine("$prompt: ", '*');
+            answer = lineReader.readLine(prompt + ": ", '*');
         }
         if (StringUtils.isEmpty(answer)) {
             return defaultValue;

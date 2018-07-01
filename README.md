@@ -23,6 +23,9 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.3
+FIXED bug in display of prompt in ConsoleUserInput
+
 ### Version 0.1.2
 Declared method PageableTableRenderer.render() as public
 
