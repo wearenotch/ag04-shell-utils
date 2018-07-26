@@ -23,6 +23,14 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.4
+
+Added dependencies to:
+* com.fasterxml.jackson.core:jackson-core:2.9.6
+* compile "com.fasterxml.jackson.core:jackson-databind:2.9.6
+
+Added AsciiTableRenderer class 
+
 ### Version 0.1.3
 FIXED bug in display of prompt in ConsoleUserInput
 

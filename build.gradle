@@ -51,6 +51,9 @@ dependencies {
     compile 'de.vandermeer:asciitable:0.3.2'
     compile "org.jline:jline:${jlineVersion}"
 
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
     compile 'org.slf4j:slf4j-api:1.7.25'
 }
 
