@@ -37,6 +37,8 @@ uploadArchives {
 
 afterReleaseBuild.dependsOn uploadArchives
 
+release.failOnSnapshotDependencies=false
+
 repositories {
     maven {
         url 'http://nexus.ag04.com/content/repositories/releases'
