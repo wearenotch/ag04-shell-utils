@@ -23,6 +23,14 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.6
+
+Introduced new helper class ShellHelper with set of:
+- print help methods
+- prompt help methods
+- select from list help methods
+
+
 ### Version 0.1.5
 
 * Changed PageableTableRenderer column width strategy so it does not render all the columns with the same length,

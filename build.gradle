@@ -37,6 +37,22 @@ uploadArchives {
 
 afterReleaseBuild.dependsOn uploadArchives
 
+repositories {
+    maven {
+        url 'http://nexus.ag04.com/content/repositories/releases'
+    }
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+    maven {
+        url 'http://repo.spring.io/libs-snapshot-local'
+    }
+    maven {
+        url 'http://repo.spring.io/release'
+    }
+    mavenCentral()
+}
+
 dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
@@ -52,9 +68,12 @@ dependencies {
     compile "org.jline:jline:${jlineVersion}"
 
     compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
     compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
     compile 'org.slf4j:slf4j-api:1.7.25'
+
+    testCompile "org.springframework.shell:spring-shell-starter:${springShellVersion}"
 }
 
 task wrapper(type: Wrapper) {
