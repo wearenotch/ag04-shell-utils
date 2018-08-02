@@ -23,6 +23,11 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.5
+
+* Changed PageableTableRenderer column width strategy so it does not render all the columns with the same length,
+but favors the column with the longest content. 
+
 ### Version 0.1.4
 
 Added dependencies to:
