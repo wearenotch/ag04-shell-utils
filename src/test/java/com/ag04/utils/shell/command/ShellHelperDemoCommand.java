@@ -1,15 +1,11 @@
 package com.ag04.utils.shell.command;
 
-import com.ag04.utils.shell.PromptColor;
-import com.ag04.utils.shell.ShellHelper;
+import com.ag04.utils.shell.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author domagoj on 01.08.2018
@@ -75,6 +71,35 @@ public class ShellHelperDemoCommand {
 
         String answer = shellHelper.selectFromList("Please select one of the options (pressing enter will return Z)", options, true, "Z");
         shellHelper.printSuccess("Option '" + answer  + "' chosen!");
+    }
+
+    @ShellMethod(value = "Print pageable table demo")
+    public void showTable() {
+        int size = 20;
+
+        List<List<String>> testData = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            List<String> testRow = new ArrayList<>();
+            testRow.add("Row " + i + ": Column 1");
+            testRow.add("Row " + i + ": Column 2");
+            testData.add(testRow);
+        }
+
+        TableDataSource tableDataSource = new TableDataSource() {
+            @Override
+            public int size() {
+                return size;
+            }
+
+            @Override
+            public List<String> getRowElements(int rowNumber) {
+                return testData.get(rowNumber);
+            }
+        };
+
+        BasicTableRenderer tableRenderer = new BasicTableRenderer();
+        PageableTableRenderer pageableTableRenderer = new PageableTableRenderer(tableRenderer, shellHelper, 4);
+        System.out.println(pageableTableRenderer.render(Arrays.asList("Column 1", "Column 2"), tableDataSource));
     }
 
 }

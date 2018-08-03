@@ -90,7 +90,7 @@ public class ShellHelper {
                 if (defaultMarker != null) {
                     printInfo(String.format("%s [%s] %s ", defaultMarker, option.getKey(), option.getValue()));
                 } else {
-                    print(String.format("  hep[%s] %s", option.getKey(), option.getValue()));
+                    print(String.format("  [%s] %s", option.getKey(), option.getValue()));
                 }
             }
             answer = lineReader.readLine(String.format("%s: ", promptMessage));
