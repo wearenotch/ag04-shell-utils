@@ -23,6 +23,13 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.7
+
+* Introduced new class BasicTableRenderer that renders a single table
+* Changed PageableTableRenderer so it uses BasicTableRenderer to show a paginated table
+* FIXED bug in display of options in ShellHelper
+
+
 ### Version 0.1.6
 
 Introduced new helper class ShellHelper with set of:
