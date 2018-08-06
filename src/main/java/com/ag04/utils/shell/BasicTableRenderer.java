@@ -20,9 +20,13 @@ public class BasicTableRenderer implements TableRenderer {
         this(DEFAULT_CWC, DEFAULT_TABLE_WIDTH);
     }
 
-    public BasicTableRenderer(AT_ColumnWidthCalculator cwc, int width) {
+    public BasicTableRenderer(int tableWidth) {
+        this(DEFAULT_CWC, tableWidth);
+    }
+
+    public BasicTableRenderer(AT_ColumnWidthCalculator cwc, int tableWidth) {
         this.cwc = (cwc != null ? cwc : DEFAULT_CWC);
-        this.width = width;
+        this.width = tableWidth;
     }
 
     @Override

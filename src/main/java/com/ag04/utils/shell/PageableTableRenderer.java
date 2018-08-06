@@ -7,9 +7,19 @@ import java.util.List;
  * @author domagoj on 20.06.2018
  */
 public class PageableTableRenderer implements TableRenderer {
+    public static final int DEFAULT_PAGE_SIZE = 15;
+
     private BasicTableRenderer basicTableRenderer;
     private int pageSize;
     private ShellHelper shellHelper;
+
+    public PageableTableRenderer(ShellHelper shellHelper) {
+        this(new BasicTableRenderer(), shellHelper, DEFAULT_PAGE_SIZE);
+    }
+
+    public PageableTableRenderer(ShellHelper shellHelper, int tableSize, int pageSize) {
+        this(new BasicTableRenderer(tableSize), shellHelper, pageSize);
+    }
 
     public PageableTableRenderer(BasicTableRenderer basicTableRenderer, ShellHelper shellHelper, int pageSize) {
             this.basicTableRenderer = basicTableRenderer;

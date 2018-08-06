@@ -23,6 +23,9 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.1.8
+* Added simplified constructors to PageableTableRenderer class.
+
 ### Version 0.1.7
 
 * Introduced new class BasicTableRenderer that renders a single table
