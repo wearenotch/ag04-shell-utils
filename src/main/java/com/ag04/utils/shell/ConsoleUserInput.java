@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * @author domagoj on 19.06.2018
  */
-@Component
 public class ConsoleUserInput {
 
     private LineReader lineReader;
