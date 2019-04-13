@@ -23,7 +23,7 @@ And simply follow the instructions on the console
 
 ## Changelog
 
-### Version 0.2.3
+### Version 0.2.3 (FAILED RELEASE)
 * Corrected build.gradle - added maven-publish plugin
 
 ### Version 0.2.2 (FAILED RELEASE)
