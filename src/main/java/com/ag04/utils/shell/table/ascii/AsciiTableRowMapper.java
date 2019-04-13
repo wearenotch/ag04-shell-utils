@@ -1,4 +1,4 @@
-package com.ag04.utils.shell.ascii;
+package com.ag04.utils.shell.table.ascii;
 
 /**
  * @author dmadunic on 26.07.2018

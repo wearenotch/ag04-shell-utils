@@ -1,4 +1,8 @@
-package com.ag04.utils.shell;
+package com.ag04.utils.shell.table.ascii;
+
+import com.ag04.utils.shell.InputReader;
+import com.ag04.utils.shell.table.TableDataSource;
+import com.ag04.utils.shell.table.TableRenderer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,21 +14,23 @@ public class PageableTableRenderer implements TableRenderer {
     public static final int DEFAULT_PAGE_SIZE = 15;
 
     private BasicTableRenderer basicTableRenderer;
+
     private int pageSize;
-    private ShellHelper shellHelper;
 
-    public PageableTableRenderer(ShellHelper shellHelper) {
-        this(new BasicTableRenderer(), shellHelper, DEFAULT_PAGE_SIZE);
+    private InputReader inputReader;
+
+    public PageableTableRenderer(InputReader inputReader) {
+        this(new BasicTableRenderer(), inputReader, DEFAULT_PAGE_SIZE);
     }
 
-    public PageableTableRenderer(ShellHelper shellHelper, int tableSize, int pageSize) {
-        this(new BasicTableRenderer(tableSize), shellHelper, pageSize);
+    public PageableTableRenderer(InputReader inputReader, int tableSize, int pageSize) {
+        this(new BasicTableRenderer(tableSize), inputReader, pageSize);
     }
 
-    public PageableTableRenderer(BasicTableRenderer basicTableRenderer, ShellHelper shellHelper, int pageSize) {
+    public PageableTableRenderer(BasicTableRenderer basicTableRenderer, InputReader inputReader, int pageSize) {
             this.basicTableRenderer = basicTableRenderer;
             this.pageSize = pageSize;
-            this.shellHelper = shellHelper;
+            this.inputReader = inputReader;
     }
 
     @Override
@@ -45,7 +51,7 @@ public class PageableTableRenderer implements TableRenderer {
 
             String commandLine = "Enter n or press ENTER for the next page, p for the previous page, or q to quit";
             displayResult = displayResult + commandLine;
-            String answer = shellHelper.promptWithOptions(displayResult, "n", Arrays.asList("n", "p", "q"));
+            String answer = inputReader.promptWithOptions(displayResult, "n", Arrays.asList("n", "p", "q"));
             switch (answer.toLowerCase()) {
                 case "q":
                     return "";

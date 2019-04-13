@@ -1,5 +1,7 @@
-package com.ag04.utils.shell;
+package com.ag04.utils.shell.table.ascii;
 
+import com.ag04.utils.shell.table.TableDataSource;
+import com.ag04.utils.shell.table.TableRenderer;
 import de.vandermeer.asciitable.AT_ColumnWidthCalculator;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestLine;

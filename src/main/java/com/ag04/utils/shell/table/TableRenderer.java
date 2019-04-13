@@ -1,4 +1,6 @@
-package com.ag04.utils.shell;
+package com.ag04.utils.shell.table;
+
+import com.ag04.utils.shell.table.TableDataSource;
 
 import java.util.List;
 
