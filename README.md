@@ -23,7 +23,10 @@ And simply follow the instructions on the console
 
 ## Changelog
 
-### Version 0.2.1
+### Version 0.2.2 
+* Corrected build.gradle release step configuration
+
+### Version 0.2.1 (FAILED RELEASE)
 * Corrected nexus.ag04.io url (https://nexus.ag04.io/repository/releases)
 
 ### Version 0.2.0 (FAILED RELEASE)

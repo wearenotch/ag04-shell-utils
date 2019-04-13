@@ -20,7 +20,12 @@ gradle.projectsEvaluated {
     }
 }
 
-uploadArchives {
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
     repositories {
         if (project.hasProperty('ag04_nexus_username') && project.hasProperty('ag04_nexus_password')) {
             maven {
@@ -34,9 +39,7 @@ uploadArchives {
     }
 }
 
-afterReleaseBuild.dependsOn uploadArchives
-
-release.failOnSnapshotDependencies=false
+afterReleaseBuild.dependsOn publish
 
 repositories {
     maven {
