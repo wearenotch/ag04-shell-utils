@@ -56,13 +56,10 @@ dependencyManagement {
 }
 
 dependencies {
-    compile "org.springframework:spring-core"
-    compile "org.springframework:spring-context-support"
-
+    compile "org.springframework.shell:spring-shell-starter:${springShellVersion}"
     compile 'org.apache.commons:commons-lang3:3.5'
 
     compile 'de.vandermeer:asciitable:0.3.2'
-    compile "org.jline:jline:${jlineVersion}"
 
     compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
     compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
@@ -70,5 +67,4 @@ dependencies {
 
     compile 'org.slf4j:slf4j-api:1.7.25'
 
-    testCompile "org.springframework.shell:spring-shell-starter:${springShellVersion}"
 }

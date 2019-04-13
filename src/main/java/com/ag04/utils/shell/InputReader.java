@@ -85,7 +85,7 @@ public class InputReader {
     }
 
     private List<String> formatOptions(String defaultValue, List<String> optionsAsList) {
-        List<String> result = new ArrayList();
+        List<String> result = new ArrayList<>();
         for (String option : optionsAsList) {
             String val = option;
             if ("".equals(option) || option == null) {

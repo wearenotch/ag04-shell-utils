@@ -1,14 +1,9 @@
 package com.ag04.utils.shell.command;
 
 import com.ag04.utils.shell.*;
-import com.ag04.utils.shell.table.BasicTableRenderer;
-import com.ag04.utils.shell.table.PageableTableRenderer;
-import com.ag04.utils.shell.table.TableDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-
-import java.util.*;
 
 /**
  * @author domagoj on 01.08.2018

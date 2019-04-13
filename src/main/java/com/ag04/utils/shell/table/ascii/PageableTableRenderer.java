@@ -1,7 +1,8 @@
-package com.ag04.utils.shell.table;
+package com.ag04.utils.shell.table.ascii;
 
 import com.ag04.utils.shell.InputReader;
-import com.ag04.utils.shell.ShellHelper;
+import com.ag04.utils.shell.table.TableDataSource;
+import com.ag04.utils.shell.table.TableRenderer;
 
 import java.util.Arrays;
 import java.util.List;
