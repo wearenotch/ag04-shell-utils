@@ -1,4 +1,4 @@
-package com.ag04.utils.shell;
+package com.ag04.utils.shell.table;
 
 import de.vandermeer.asciitable.AT_ColumnWidthCalculator;
 import de.vandermeer.asciitable.AsciiTable;

@@ -1,4 +1,4 @@
-package com.ag04.utils.shell.ascii;
+package com.ag04.utils.shell.table.ascii;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

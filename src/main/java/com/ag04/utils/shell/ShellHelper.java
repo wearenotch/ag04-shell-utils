@@ -1,160 +1,82 @@
 package com.ag04.utils.shell;
 
-import org.jline.reader.LineReader;
-import org.jline.utils.AttributedStringBuilder;
-import org.jline.utils.AttributedStyle;
-import org.springframework.util.StringUtils;
-
-import java.util.*;
+import org.jline.terminal.Terminal;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
+ * ShellHelper class encapsulates many util print methods.
+ *
  * @author domagoj on 01.08.2018
  */
 public class ShellHelper {
 
-    public static final List<String> DEFAULT_CONFIRM_WORDS = Arrays.asList("y", "yes");
+    @Value("${shell.out.info:CYAN}")
+    public String infoColor;
 
-    private final List<String> confirmWords;
+    @Value("${shell.out.success:GREEN}")
+    public String successColor;
 
-    private LineReader lineReader;
+    @Value("${shell.out.warning:YELLOW}")
+    public String warningColor;
 
-    public ShellHelper(LineReader lineReader) {
-        this(lineReader, null);
-    }
+    @Value("${shell.out.error:RED}")
+    public String errorColor;
 
-    public ShellHelper(LineReader lineReader, List<String> confirmWords) {
-        this.confirmWords = confirmWords != null ? confirmWords : DEFAULT_CONFIRM_WORDS;
-        this.lineReader = lineReader;
-    }
+    private Terminal terminal;
 
-    //--- prompt methods ------------------------------------------------------
-
-    /**
-     * Loops until one of the `options` is provided. Pressing return is equivalent to
-     * returning `defaultValue`.
-     */
-    public String promptWithOptions(String  prompt, String defaultValue, List<String> optionsAsList) {
-        String answer;
-        List<String> allowedAnswers = new ArrayList<>(optionsAsList);
-        if (StringUtils.hasText(defaultValue)) {
-            allowedAnswers.add("");
-        }
-        do {
-            answer = lineReader.readLine(String.format("%s %s: ", prompt, optionsAsList));
-        } while (!allowedAnswers.contains(answer) && "" != answer);
-
-        if (StringUtils.isEmpty(answer) && allowedAnswers.contains("")) {
-            return defaultValue;
-        }
-        return answer;
+    public ShellHelper(Terminal terminal) {
+        this.terminal = terminal;
     }
 
     /**
-     * Loops until one of the `options` is provided.
-     */
-    public String promptWithOptions(String  prompt, List<String> optionsAsList) {
-        return promptWithOptions(prompt, null, optionsAsList);
-    }
-
-    public String prompt(String  prompt, String defaultValue, boolean echo) {
-        String answer = "";
-
-        if (echo) {
-            answer = lineReader.readLine(prompt + ": ");
-        } else {
-            answer = lineReader.readLine(prompt + ": ", '*');
-        }
-        if (StringUtils.isEmpty(answer)) {
-            return defaultValue;
-        }
-        return answer;
-    }
-
-    //--- selectFromList methods ----------------------------------------------
-
-    public String selectFromList(String promptMessage, Map<String, String> options, boolean ignoreCase, String defaultValue) {
-        String answer;
-        Set<String> allowedAnswers = new HashSet<>(options.keySet());
-        if (defaultValue != null && !defaultValue.equals("")) {
-            allowedAnswers.add("");
-        }
-
-        do {
-            for (Map.Entry<String, String> option: options.entrySet()) {
-                String defaultMarker = null;
-                if (defaultValue != null) {
-                    if (option.getKey().equals(defaultValue)) {
-                        defaultMarker = "*";
-                    }
-                }
-                if (defaultMarker != null) {
-                    printInfo(String.format("%s [%s] %s ", defaultMarker, option.getKey(), option.getValue()));
-                } else {
-                    print(String.format("  [%s] %s", option.getKey(), option.getValue()));
-                }
-            }
-            answer = lineReader.readLine(String.format("%s: ", promptMessage));
-        } while (!containsString(allowedAnswers, answer, ignoreCase) && "" != answer);
-
-        if (StringUtils.isEmpty(answer) && allowedAnswers.contains("")) {
-            return defaultValue;
-        }
-        return answer;
-    }
-
-    public boolean containsString(Set <String> l, String s, boolean ignoreCase){
-        if (!ignoreCase) {
-            return l.contains(s);
-        }
-
-        Iterator <String> it = l.iterator();
-        while(it.hasNext()) {
-            if(it.next().equalsIgnoreCase(s))
-                return true;
-        }
-        return false;
-    }
-
-    //--- print methods -------------------------------------------------------
-
-    /**
-     * Print message with color {@link PromptColor#GREEN}
+     * Print message to the console in the default color.
      *
      * @param message message to print
      */
-    public void printSuccess(String message) {
-        print(message, PromptColor.GREEN);
+    public void println(String message) {
+        println(message, null);
     }
 
     /**
-     * Print message with color {@link PromptColor#CYAN}
+     * Print message to the console in the success color.
      *
      * @param message message to print
      */
-    public void printInfo(String message) {
-        print(message, PromptColor.CYAN);
+    public void printlnSuccess(String message) {
+        println(message, PromptColor.valueOf(successColor));
     }
 
     /**
-     * Print message with color {@link PromptColor#YELLOW}
+     * Print message to the console in the info color.
      *
      * @param message message to print
      */
-    public void printWarning(String message) {
-        print(message, PromptColor.YELLOW);
+    public void printlnInfo(String message) {
+        println(message, PromptColor.valueOf(infoColor));
     }
 
     /**
-     * Print message with color {@link PromptColor#RED}
+     * Print message to the console in the warning color.
      *
      * @param message message to print
      */
-    public void printError(String message) {
-        print(message, PromptColor.RED);
+    public void printlnWarning(String message) {
+        println(message, PromptColor.valueOf(warningColor));
     }
 
     /**
-     * Print in the console
+     * Print message to the console in the error color.
+     *
+     * @param message message to print
+     */
+    public void printlnError(String message) {
+        println(message, PromptColor.valueOf(errorColor));
+    }
+
+
+
+    /**
+     * Print message to the console in the default color.
      *
      * @param message message to print
      */
@@ -163,7 +85,43 @@ public class ShellHelper {
     }
 
     /**
-     * Print in the console
+     * Print message to the console in the success color.
+     *
+     * @param message message to print
+     */
+    public void printSuccess(String message) {
+        println(message, PromptColor.valueOf(successColor));
+    }
+
+    /**
+     * Print message to the console in the info color.
+     *
+     * @param message message to print
+     */
+    public void printInfo(String message) {
+        print(message, PromptColor.valueOf(infoColor));
+    }
+
+    /**
+     * Print message to the console in the warning color.
+     *
+     * @param message message to print
+     */
+    public void printWarning(String message) {
+        print(message, PromptColor.valueOf(warningColor));
+    }
+
+    /**
+     * Print message to the console in the error color.
+     *
+     * @param message message to print
+     */
+    public void printError(String message) {
+        print(message, PromptColor.valueOf(errorColor));
+    }
+
+    /**
+     * Generic Print to the console method.
      *
      * @param message message to print
      * @param color   (optional) prompt color
@@ -171,23 +129,24 @@ public class ShellHelper {
     public void print(String message, PromptColor color) {
         String toPrint = message;
         if (color != null) {
-            toPrint = getColored(message, color);
+            toPrint = Chalk.color(message, color);
         }
-        lineReader.getTerminal().writer().println(toPrint);
+        terminal.writer().print(toPrint);
+        terminal.flush();
     }
 
     /**
-     * Color message with given color
+     * Generic Println to the console method.
      *
-     * @param message message to return
-     * @param color   color to print
-     * @return colored message
+     * @param message message to print
+     * @param color   (optional) prompt color
      */
-    public String getColored(String message, PromptColor color) {
-        return new AttributedStringBuilder().append(
-            message,
-            AttributedStyle.DEFAULT.foreground(color.toJlineAttributedStyle())
-        ).toAnsi();
+    public void println(String message, PromptColor color) {
+        String toPrint = message;
+        if (color != null) {
+            toPrint = Chalk.color(message, color);
+        }
+        terminal.writer().println(toPrint);
+        terminal.flush();
     }
-
 }

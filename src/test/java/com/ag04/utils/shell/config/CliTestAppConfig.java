@@ -1,10 +1,15 @@
 package com.ag04.utils.shell.config;
 
-import com.ag04.utils.shell.ConsoleUserInput;
+import com.ag04.utils.shell.InputReader;
+import com.ag04.utils.shell.PromptColor;
 import com.ag04.utils.shell.ShellHelper;
-import com.ag04.utils.shell.ascii.AsciiTableRenderer;
+import com.ag04.utils.shell.table.ascii.AsciiTableRenderer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jline.reader.History;
 import org.jline.reader.LineReader;
+import org.jline.reader.LineReaderBuilder;
+import org.jline.reader.Parser;
+import org.jline.terminal.Terminal;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 import org.springframework.boot.ExitCodeExceptionMapper;
@@ -14,6 +19,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.shell.ExitRequest;
 import org.springframework.shell.InputProvider;
 import org.springframework.shell.jline.InteractiveShellApplicationRunner;
+import org.springframework.shell.jline.JLineShellAutoConfiguration;
 import org.springframework.shell.jline.PromptProvider;
 
 /**
@@ -53,13 +59,32 @@ public class CliTestAppConfig {
     }
 
     @Bean
-    public ConsoleUserInput consoleUserInput(@Lazy LineReader lineReader) {
-        return new ConsoleUserInput(lineReader);
-    }
+    public InputReader inputReader(
+            @Lazy Terminal terminal,
+            @Lazy Parser parser,
+            JLineShellAutoConfiguration.CompleterAdapter completer,
+            @Lazy History history,
+            ShellHelper shellHelper
+    ) {
+        LineReaderBuilder lineReaderBuilder = LineReaderBuilder.builder()
+                .terminal(terminal)
+                .completer(completer)
+                .history(history)
+                .highlighter(
+                        (LineReader reader, String buffer) -> {
+                            return new AttributedString(
+                                    buffer, AttributedStyle.BOLD.foreground(PromptColor.WHITE.toJlineAttributedStyle())
+                            );
+                        }
+                ).parser(parser);
 
+        LineReader lineReader = lineReaderBuilder.build();
+        lineReader.unsetOpt(LineReader.Option.INSERT_TAB);
+        return new InputReader(lineReader, shellHelper);
+    }
     @Bean
-    public ShellHelper shellHelper(@Lazy LineReader lineReader) {
-        ShellHelper shellHelper = new ShellHelper(lineReader);
+    public ShellHelper shellHelper(@Lazy Terminal terminal) {
+        ShellHelper shellHelper = new ShellHelper(terminal);
         return shellHelper;
     }
 
