@@ -23,7 +23,10 @@ And simply follow the instructions on the console
 
 ## Changelog
 
-### Version 0.2.0
+### Version 0.2.1
+* Corrected nexus.ag04.io url (https://nexus.ag04.io/repository/releases)
+
+### Version 0.2.0 (FAILED RELEASE)
 
 * Major refactoring of packages
 * Removed ConsoleUserInput class and instead introduced InputReader class
