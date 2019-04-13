@@ -24,7 +24,7 @@ uploadArchives {
     repositories {
         if (project.hasProperty('ag04_nexus_username') && project.hasProperty('ag04_nexus_password')) {
             maven {
-                url 'http://nexus.ag04.com/content/repositories/releases'
+                url 'http://nexus.ag04.io/content/repositories/releases'
                 credentials {
                     username ag04_nexus_username
                     password ag04_nexus_password
@@ -34,14 +34,13 @@ uploadArchives {
     }
 }
 
-
 afterReleaseBuild.dependsOn uploadArchives
 
 release.failOnSnapshotDependencies=false
 
 repositories {
     maven {
-        url 'http://nexus.ag04.com/content/repositories/releases'
+        url 'http://nexus.ag04.io/content/repositories/releases'
     }
     maven {
         url 'https://repo.spring.io/milestone'

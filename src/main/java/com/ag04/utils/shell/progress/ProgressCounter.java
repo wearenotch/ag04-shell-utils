@@ -11,7 +11,6 @@ import org.jline.terminal.Terminal;
  * <li>2. Display spinner in combination with message and numeric counter.</li>
  * </ul>
  *
- *
  * @author: Domagoj Madunić
  */
 public class ProgressCounter {

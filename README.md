@@ -23,6 +23,17 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.2.0
+
+* Major refactoring of packages
+* Removed ConsoleUserInput class and instead introduced InputReader class
+* Added ConsoleSequences class
+* Added Chalk util class
+* Refactored ShellHelper - removed all input methods
+* Added Support for SpringShell tables
+* Added ProgressBar and ProgressCounter classes
+* Upgraded SpringShell to 2.0.1.RELEASE
+
 ### Version 0.1.8
 * Added simplified constructors to PageableTableRenderer class.
 
