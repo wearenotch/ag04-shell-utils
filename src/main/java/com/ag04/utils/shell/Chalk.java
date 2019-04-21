@@ -163,11 +163,16 @@ public class Chalk {
         return new AttributedStringBuilder().append(message, AttributedStyle.BOLD).toAnsi();
     }
 
+    public static String color(String message, String colorName) {
+        return color(message, colorName, false);
+    }
+
     /**
-     * Color message with given color
+     * Color message with given color and in bold style.
      *
      * @param message message to return
      * @param colorName  name of the ANSI color to print in
+     * @param bold  should the String be in bold style or not
      * @return colored message
      */
     public static String color(String message, String colorName, boolean bold) {
@@ -179,10 +184,23 @@ public class Chalk {
     }
 
     /**
+     * Color message with given color .
+     *
+     * @param message message to return
+     * @param color   color to print
+     * @return colored message
+     */
+    public static String color(String message, PromptColor color) {
+        return color(message, color, false);
+    }
+
+
+    /**
      * Color message with given color and in a given weight (bold)
      *
      * @param message message to return
      * @param color   color to print
+     * @param bold  should the String be in bold style or not
      * @return colored message
      */
     public static String color(String message, PromptColor color, boolean bold) {
