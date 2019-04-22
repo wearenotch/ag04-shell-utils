@@ -111,7 +111,7 @@ public class InputReader {
         if (defaultValue != null && !defaultValue.equals("")) {
             allowedAnswers.add("");
         }
-        shellHelper.print(String.format("%s: ", headingMessage));
+        shellHelper.println(String.format("%s: ", headingMessage));
         do {
             for (Map.Entry<String, String> option: options.entrySet()) {
                 String defaultMarker = null;
@@ -121,9 +121,9 @@ public class InputReader {
                     }
                 }
                 if (defaultMarker != null) {
-                    shellHelper.printInfo(String.format("%s [%s] %s ", defaultMarker, option.getKey(), option.getValue()));
+                    shellHelper.printlnInfo(String.format("%s [%s] %s ", defaultMarker, option.getKey(), option.getValue()));
                 } else {
-                    shellHelper.print(String.format("  [%s] %s", option.getKey(), option.getValue()));
+                    shellHelper.println(String.format("  [%s] %s", option.getKey(), option.getValue()));
                 }
             }
             answer = lineReader.readLine(String.format("%s: ", promptMessage));
