@@ -23,6 +23,9 @@ And simply follow the instructions on the console
 
 ## Changelog
 
+### Version 0.2.5
+* Improved ProgressCounter so it deletes line before printing output.
+
 ### Version 0.2.4
 * Improved Chalk so it can return bold Strings.
 

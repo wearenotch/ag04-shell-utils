@@ -50,7 +50,7 @@ public class ProgressCounter {
         }
         String progress = String.format(pattern, message, count);
 
-        terminal.writer().println(ConsoleSequences.CUU + "\r" + getSpinnerChar() + progress);
+        terminal.writer().println(ConsoleSequences.CUU + "\r" + ConsoleSequences.DL + getSpinnerChar() + progress);
         terminal.flush();
     }
 
@@ -59,7 +59,7 @@ public class ProgressCounter {
             terminal.writer().println();
             started = true;
         }
-        terminal.writer().println(ConsoleSequences.CUU + "\r" + getSpinnerChar());
+        terminal.writer().println(ConsoleSequences.CUU + "\r" + ConsoleSequences.DL + getSpinnerChar());
         terminal.flush();
     }
 

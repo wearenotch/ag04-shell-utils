@@ -72,4 +72,10 @@ public class ConsoleSequences {
      * ESC [ <n> M - Deletes <n> lines from the buffer, starting with the row the cursor is on.
      */
     public static final String DL = "\u001B[1M";
+
+    /**
+     * ESC [ <n> M - Deletes <n> lines from the buffer, starting with the row the cursor is on.
+     */
+    public static final String DL_N = "\u001B[%d1M";
+
 }

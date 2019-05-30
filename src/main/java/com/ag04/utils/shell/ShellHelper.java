@@ -149,4 +149,12 @@ public class ShellHelper {
         terminal.writer().println(toPrint);
         terminal.flush();
     }
+
+    public void deleteCurrentLine() {
+        terminal.writer().println("\r" + ConsoleSequences.DL);
+    }
+
+    public void deleteLines(int numLines) {
+        terminal.writer().println("\r" + String.format(ConsoleSequences.DL_N, numLines));
+    }
 }
