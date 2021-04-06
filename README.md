@@ -7,7 +7,7 @@ AG04 Spring shell utils
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 ### Setup (First time)
-1. Clone the repository: `git clone https://YoutUserName@bitbucket.org/ag04/ag04-shell-utils.git`
+1. Clone the repository: `git clone git@github.com:ag04/ag04-shell-utils.git`
 4. Build project with: ` ./gradlew clean build `
 
 ### Release
