@@ -1,8 +1,5 @@
 pluginManagement.repositories {
     maven {
-        url 'http://nexus.ag04.com/content/repositories/gradle-plugins/'
-    }
-    maven {
         url 'https://search.maven.org/'
     }
     gradlePluginPortal()
