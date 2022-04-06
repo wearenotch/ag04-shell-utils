@@ -4,6 +4,13 @@
 ### Changed
 - 
 
+## [0.2.10]
+### Added
+- Added CI Build status badge
+
+### Changed
+- Modified build.gradle - removed check for existence of github_user and github_password properties
+
 ## [0.2.9]
 ### Added
 * CHANGELOG.md with track of made changes
