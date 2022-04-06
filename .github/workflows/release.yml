@@ -55,7 +55,7 @@ jobs:
       
       - name: Publish package
         run: |-
-          ./gradlew release -Prelease.useAutomaticVersion=true -Pgithub_username=${{ env.GITHUB_ACTOR }} -Prelease.releaseVersion=${{ env.RELEASE_VERSION }} -Prelease.newVersion=${{ env.NEXT_VERSION }}
+          ./gradlew release -Prelease.useAutomaticVersion=true -Pgithub_username=${{ env.GITHUB_ACTOR }} -Pgithub_password=${{ secrets.GITHUB_TOKEN }} -Prelease.releaseVersion=${{ env.RELEASE_VERSION }} -Prelease.newVersion=${{ env.NEXT_VERSION }}
       
       - name: Update README.md
         id: readmeUpdate

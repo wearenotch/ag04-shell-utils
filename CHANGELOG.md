@@ -4,6 +4,10 @@
 ### Changed
 - 
 
+## [0.2.11]
+### Changed
+- Fixed problem with release.yml github workflow
+
 ## [0.2.10]
 ### Added
 - Added CI Build status badge

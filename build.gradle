@@ -28,12 +28,14 @@ publishing {
         maven {
             url "artifactregistry://europe-west3-maven.pkg.dev/ag04-inventory/maven-repository"
         }*/
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ag04/ag04-shell-utils")
-            credentials {
-                username github_username
-                password github_password
+        if (project.hasProperty('github_username') && project.hasProperty('github_password')) {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/ag04/ag04-shell-utils")
+                credentials {
+                    username github_username
+                    password github_password
+                }
             }
         }
     }
