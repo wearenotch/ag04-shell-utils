@@ -25,7 +25,8 @@ env:
 jobs:
   publish:
     name: Release next version
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,tiny]
+    #runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
