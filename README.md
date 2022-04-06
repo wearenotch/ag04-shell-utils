@@ -1,19 +1,20 @@
 # ag04-shell-utils
 
+[![CI Build](https://github.com/ag04/ag04-shell-utils/actions/workflows/ci.yml/badge.svg)](https://github.com/ag04/ag04-shell-utils/actions/workflows/ci.yml)
 ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white&style=flat)
 ![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white&style=flat)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 AG04 Spring shell utils.
 
-**Latest project version: 0.2.9**
+**Latest project version: 0.2.10**
 
 ## Usage
 To use this jar in your project add the following to the dependencies section:
 
 ```groovy
 dependencies {
-    implementation "com.ag04.utils:ag04-shell-utils:0.2.9"
+    implementation "com.ag04.utils:ag04-shell-utils:0.2.10"
     ...
 }
 ```
@@ -23,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>com.ag04.utils</groupId>
   <artifactId>ag04-shell-utils</artifactId>
-  <version>0.2.9</version>
+  <version>0.2.10</version>
 </dependency>
 ```
 (pom.xml)
