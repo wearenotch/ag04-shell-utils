@@ -1,6 +1,11 @@
 # ag04-shell-utils
 
-AG04 Spring shell utils
+![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white&style=flat)
+![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white&style=flat)
+
+AG04 Spring shell utils.
+
+**Latest project version: 0.0.8**
 
 ## Usage
 ### Requirements
@@ -10,7 +15,16 @@ AG04 Spring shell utils
 1. Clone the repository: `git clone git@github.com:ag04/ag04-shell-utils.git`
 4. Build project with: ` ./gradlew clean build `
 
-### Release
+### Github Actions release
+
+New version of library jar  is released with the "Release next version" github action script.
+Once everything is pushed simply run this workflow script.
+It will perform the following:
+- build new jar version
+- publish built jar to GitHub packages 
+- Create new Relase with comments from CHANGELOG.md for this release.
+- Update README.md to contain latest version number.
+### Manual Release
 Make sure that file gradle.properties in folder ${USER_HOME}/.gradle/ contains the following two variables defined
 
 * ag04_nexus_username

@@ -1,8 +1,8 @@
 plugins {
     id 'maven-publish'
-    id "com.google.cloud.artifactregistry.gradle-plugin" version "2.1.4"
+    //id "com.google.cloud.artifactregistry.gradle-plugin" version "2.1.4"
     id 'net.researchgate.release' version '2.8.1'
-    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'idea'
 }
@@ -24,10 +24,10 @@ publishing {
     }
     
     repositories {
+        /*
         maven {
             url "artifactregistry://europe-west3-maven.pkg.dev/ag04-inventory/maven-repository"
-        }
-        /*
+        }*/
         if (project.hasProperty('github_username') && project.hasProperty('github_password')) {
             maven {
                 name = "GitHubPackages"
@@ -37,28 +37,19 @@ publishing {
                     password github_password
                 }
             }
-        }*/
-        /*
-        if (project.hasProperty('ag04_nexus_username') && project.hasProperty('ag04_nexus_password')) {
-            maven {
-                url 'https://nexus.ag04.io/repository/releases'
-                credentials {
-                    username ag04_nexus_username
-                    password ag04_nexus_password
-                }
-            }
-        }*/
+        }
     }
 }
 
 afterReleaseBuild.dependsOn publish
+
 repositories {
     maven {
         url 'https://repo.spring.io/milestone'
-    }
+    }/*
     maven {
         url "artifactregistry://europe-west3-maven.pkg.dev/ag04-inventory/maven-repository"
-    }
+    }*/
     mavenCentral()
     jcenter()
 }
@@ -71,14 +62,11 @@ dependencyManagement {
 
 dependencies {
     implementation "org.springframework.shell:spring-shell-starter:${springShellVersion}"
-    implementation 'org.apache.commons:commons-lang3:3.5'
+    implementation "org.apache.commons:commons-lang3:${commonsLang3Version}"
 
-    implementation 'de.vandermeer:asciitable:0.3.2'
+    implementation "de.vandermeer:asciitable:${asciitableVersion}"
 
     implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
     implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
-
-    implementation 'org.slf4j:slf4j-api:1.7.25'
-
 }
