@@ -2,12 +2,56 @@
 
 ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white&style=flat)
 ![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white&style=flat)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 AG04 Spring shell utils.
 
-**Latest project version: 0.0.8**
+**Latest project version: 0.2.9**
 
 ## Usage
+To use this jar in your project add the following to the dependencies section:
+
+```groovy
+dependencies {
+    implementation "com.ag04.utils:ag04-shell-utils:0.2.9"
+    ...
+}
+```
+(build.gradle)
+
+```xml
+<dependency>
+  <groupId>com.ag04.utils</groupId>
+  <artifactId>ag04-shell-utils</artifactId>
+  <version>0.2.9</version>
+</dependency>
+```
+(pom.xml)
+
+And regitser github package as maven repository, as is for example show in the snippet bellow:
+
+```groovy
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/ag04/ag04-shell-utils")
+        credentials {
+            username = github_username
+            password = github_token
+        }
+    }
+}
+```
+**github_token** should contain the value of (PAT) "personal access token" that has Access to public repositories.
+
+For more see:
+* [Personal GitHub access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+* [Working with the Gradle registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry)
+
+
+## Development
+
 ### Requirements
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -20,97 +64,45 @@ AG04 Spring shell utils.
 New version of library jar  is released with the "Release next version" github action script.
 Once everything is pushed simply run this workflow script.
 It will perform the following:
-- build new jar version
-- publish built jar to GitHub packages 
+- build new version of jar
+- publish built jar to GitHub packages (`https://maven.pkg.github.com/ag04/ag04-shell-utils`)
 - Create new Relase with comments from CHANGELOG.md for this release.
 - Update README.md to contain latest version number.
+
 ### Manual Release
 Make sure that file gradle.properties in folder ${USER_HOME}/.gradle/ contains the following two variables defined
 
-* ag04_nexus_username
-* ag04_nexus_password
+* github_username
+* github_password : personal github token to be used to install/update packages
 
-1) Commit everything
-2) ./gradlew release
+1) Commit and push everything
+2) `./gradlew release`
 
 And simply follow the instructions on the console
 
-## Changelog
+### Github Actions release
 
-### Version 0.2.5
-* Improved ProgressCounter so it deletes line before printing output.
+New version of library jar  is released with the "Release next version" github action script.
+Once everything is pushed simply run this workflow script.
+It will perform the following:
+- build new jar version
+- publish jar to github packages
+- Create new Relase with comments from CHANGELOG.md for this release.
+- Update README.md to contain latest version number.
 
-### Version 0.2.4
-* Improved Chalk so it can return bold Strings.
+## Project Dependencies
 
-### Version 0.2.3 
-* Corrected build.gradle - added maven-publish plugin
+| Dependency                       | Version         |
+|----------------------------------|-----------------|
+| spring-boot                      | 2.1.4.RELEASE   |
+| spring-shell                     | 2.0.1.RELEASE   |
+| de.vandermeer:asciitable         | 0.3.2           |
+| org.apache.commons:commons-lang3 | 3.5             |
+| org.slf4j:slf4j-api              | 1.7.25          |
+| com.fasterxml.jackson            | 2.9.6           |
 
-### Version 0.2.2 (FAILED RELEASE)
-* Corrected build.gradle release step configuration
+## Contributors:
+* [Domagoj Madunić](https://github.com/dmadunic)
 
-### Version 0.2.1 (FAILED RELEASE)
-* Corrected nexus.ag04.io url (https://nexus.ag04.io/repository/releases)
-
-### Version 0.2.0 (FAILED RELEASE)
-
-* Major refactoring of packages
-* Removed ConsoleUserInput class and instead introduced InputReader class
-* Added ConsoleSequences class
-* Added Chalk util class
-* Refactored ShellHelper - removed all input methods
-* Added Support for SpringShell tables
-* Added ProgressBar and ProgressCounter classes
-* Upgraded SpringShell to 2.0.1.RELEASE
-
-### Version 0.1.8
-* Added simplified constructors to PageableTableRenderer class.
-
-### Version 0.1.7
-
-* Introduced new class BasicTableRenderer that renders a single table
-* Changed PageableTableRenderer so it uses BasicTableRenderer to show a paginated table
-* FIXED bug in display of options in ShellHelper
-
-
-### Version 0.1.6
-
-Introduced new helper class ShellHelper with set of:
-- print help methods
-- prompt help methods
-- select from list help methods
-
-
-### Version 0.1.5
-
-* Changed PageableTableRenderer column width strategy so it does not render all the columns with the same length,
-but favors the column with the longest content. 
-
-### Version 0.1.4
-
-Added dependencies to:
-* com.fasterxml.jackson.core:jackson-core:2.9.6
-* compile "com.fasterxml.jackson.core:jackson-databind:2.9.6
-
-Added AsciiTableRenderer class 
-
-### Version 0.1.3
-FIXED bug in display of prompt in ConsoleUserInput
-
-### Version 0.1.2
-Declared method PageableTableRenderer.render() as public
-
-### Version 0.1.0
-First release contains the following util classes:
-* ConsoleUserInput - 
-* PageableTableRenderer -
-
-
-#### Dependencies:
-
-* spring-boot : 1.5.14.RELEASE
-* org.apache.commons:commons-lang3 : 3.5
-* de.vandermeer:asciitable : 0.3.2
-* org.jline:jline : 3.4.0
-* org.slf4j:slf4j-api : 1.7.25
-
+---
+(c) AG04 2022.
